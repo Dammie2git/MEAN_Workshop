@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Classroom</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Students in the section</h1>
+    <table border="1">
+      <tr>
+        <th>
+          Name
+        </th>
+        <th>
+          USN
+        </th>
+        <th>
+          Gender
+        </th>
+        <th>
+          Delete student
+        </th>
+      </tr>
+
+      <% for(var index in studentsArray){ %>
+        <tr>
+          <td>
+            <%= studentsArray[index].name %>
+          </td>
+          <td>
+            <%= studentsArray[index].usn%>
+          </td>
+          <td>
+            <%= studentsArray[index].gender %>
+          </td>
+          <td>
+            <a href="/delete/<%= studentsArray[index]._id %>">Delete user</a>
+          </td>
+        </tr>
+      <% } %>
+
+    </table>
+  </body>
+</html>

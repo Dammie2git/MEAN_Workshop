@@ -5,6 +5,14 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+//index - show all resources
+//add - add a new resource
+//delete - delete a resource
+
+var index = require('./routes/index');
+var add = require('./routes/add');
+var deleteR = require('./routes/delete');
+
 var app = express();
 
 // view engine setup
@@ -19,29 +27,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-var studentsArray = [{
-  name:'A',usn:'1',gender:'Male'
-},{
-  name:'B',usn:'2',gender:'Female'
-},{
-  name:'C',usn:'3',gender:'Male'
-}]
-
-//display table with all students data in it
-app.get('/', function(req, res, next) {
-  res.render('index',{studentsArray:studentsArray});
-})
-
-//display add form that allows addition of new student
-app.get('/add', function(req, res) {
-  res.render('add');
-})
-
-//get the data sent from the form and add it to the array of students
-app.post('/add',function(req,res){
-  studentsArray.push(req.body);
-  res.redirect('/');
-})
+app.use('/', index);
+app.use('/add',add);
+app.use('/delete',deleteR);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
