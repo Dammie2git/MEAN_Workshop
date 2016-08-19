@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Data entry application</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <table border="1">
+      <tr>
+        <th>
+          Name
+        </th>
+        <th>
+          USN
+        </th>
+        <th>
+          Gender
+        </th>
+      </tr>
+
+      <% for(var index in studentsArray){ %>
+
+        <tr>
+          <td>
+            <%= studentsArray[index].name %>
+          </td>
+          <td>
+            <%= studentsArray[index].usn %>
+          </td>
+          <td>
+            <%= studentsArray[index].gender %>
+          </td>
+        </tr>
+
+      <% } %>
+
+    </table>
+
+    <a href="/add">Add a user</a>
+  </body>
+</html>
